@@ -1,20 +1,5 @@
 #pragma once
 
-/*
- * display_score.h — Display TM1637 de PUNTOS para BasketBot
- *   CLK → GPIO 14  |  DIO → GPIO 27
- *
- * Qué muestra según el modo:
- *   MODO_1VS1     → AB:CD  dígitos izq = puntos Equipo A  |  dígitos dcha = puntos Equipo B
- *                   (cada equipo hasta 99 pts; sin los dos puntos centrales)
- *   MODO_SHOOTOUT → puntos del jugador en turno (0000–9999)
- *   MODO_21       → puntos del jugador en turno (0000–9999)
- *   MODO_LIBRE    → puntos totales              (0000–9999)
- *   Sin juego / fin / pausa → "----"
- *
- * Dependencia: TM1637Display by Avishay Orpaz
- */
-
 #include <TM1637Display.h>
 
 #define SCORE_CLK_PIN   14

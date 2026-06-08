@@ -1,18 +1,5 @@
 #pragma once
 
-/*
- * game_libre.h — Modo libre: marcador único, canastas de +2/-2 sin límite
- *
- * ⚠️ MODIFICADO: Ya NO lee sensor físico directamente.
- *    Las canastas se notifican desde marcador.ino mediante gameLibre_notificarCanasta()
- *
- * Hardware:
- *   GPIO 21 → LED (destello breve al anotar)
- *
- * El sensor físico suma +2 igual que el botón de la app.
- * El botón "Deshacer" de la app resta -2.
- */
-
 #define GL_PIN_LED      21
 
 static bool          _gl_activo        = false;

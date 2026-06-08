@@ -1,29 +1,5 @@
 #pragma once
 
-/*
- * sensor_canasta.h — Detección inteligente de canasta con 2 sensores IR
- *
- * Hardware:
- *   GPIO 15 → Sensor TSOP58438 ARRIBA (aro)    — INPUT
- *   GPIO 13 → Sensor TSOP58438 ABAJO  (red)    — INPUT
- *   GPIO 12 → LED emisor IR 38kHz              — PWM output
- *
- * Lógica de detección:
- *   1. Pelota pasa por ARRIBA (aro) → inicia ventana temporal
- *   2. Si pasa por ABAJO (red) dentro del tiempo → CANASTA VÁLIDA
- *   3. Si timeout sin pasar por ABAJO → FALLO (rebote en aro)
- *   4. Si ABAJO detecta sin ARRIBA previo → IGNORADO (entrada desde abajo)
- *   5. Si ARRIBA detecta pero ABAJO ya está activo → IGNORADO (pelota atascada)
- *
- * Estado del sensor:
- *   - LOW  (0) → Haz libre (recibe IR)
- *   - HIGH (1) → Obstáculo detectado (haz cortado)
- *
- * Anti-rebote:
- *   - Cooldown de 500 ms tras cada canasta válida
- *   - Filtrado de detecciones simultáneas (pelota atascada)
- */
-
 // ─── CONFIGURACIÓN DE HARDWARE ───────────────────────────────────────────────
 #define SC_PIN_SENSOR_ARRIBA  15
 #define SC_PIN_SENSOR_ABAJO   13
@@ -74,7 +50,7 @@ static bool _sc_leerSensor(int pin) {
   delayMicroseconds(SC_DURACION_RAFAGA_US);
   
   // Leer estado del sensor
-  bool obstaculo = (digitalRead(pin) == LOW);
+  bool obstaculo = (digitalRead(pin) == HIGH);
   
   // Apagar emisor IR
   ledcWrite(SC_PIN_IR_EMISOR, 0);
@@ -181,6 +157,8 @@ bool sensor_tick() {
   // Leer ambos sensores
   bool arriba = _sc_leerSensor(SC_PIN_SENSOR_ARRIBA);
   bool abajo  = _sc_leerSensor(SC_PIN_SENSOR_ABAJO);
+  arriba=;
+ //abajo=!abajo;
   
   // ─── MÁQUINA DE ESTADOS ────────────────────────────────────────────────────
   

@@ -1,25 +1,5 @@
 #pragma once
 
-/*
- * game_1vs1.h — Partido 1 vs 1 / Equipo A vs Equipo B
- *
- * ⚠️ MODIFICADO: Ya NO lee sensores físicos directamente.
- *    Las canastas se notifican desde marcador.ino mediante game1vs1_notificarCanasta()
- *
- * Hardware:
- *   GPIO 16 → Pulsador Equipo A (INPUT_PULLUP, activo LOW)
- *   GPIO 17 → Pulsador Equipo B (INPUT_PULLUP, activo LOW)
- *   GPIO 21 → LED Verde  — canasta pendiente de confirmar
- *   GPIO 19 → LED Azul   — destello al anotar Equipo A
- *   GPIO 18 → LED Rojo   — destello al anotar Equipo B
- *
- * Flujo LED:
- *   Canasta detectada  → Verde ON
- *   Equipo A pulsa     → Verde OFF, Azul ON 300 ms
- *   Equipo B pulsa     → Verde OFF, Rojo ON 300 ms
- *   Timeout ventana    → Verde OFF (canasta anulada)
- */
-
 #define G1_PIN_BTN_A    16
 #define G1_PIN_BTN_B    17
 #define G1_PIN_LED_V    21   // Verde  — espera confirmacion

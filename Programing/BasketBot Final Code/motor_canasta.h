@@ -1,36 +1,5 @@
 #pragma once
 
-/*
- * motor_canasta.h — Control NEMA 17 para ajuste de altura de canasta
- *
- * Hardware:
- *   GPIO 32 → STEP
- *   GPIO 33 → DIR
- *   GPIO 25 → EN   (LOW = motor activo)
- *   GPIO 35 → Final de carrera (INPUT_PULLUP, activo HIGH cuando toca)
- *
- * ⚠️ CAMBIO: Final de carrera movido de GPIO 15 → GPIO 35
- *    para evitar conflicto con sensor_canasta.h (que usa GPIO 15 para sensor arriba)
- *
- * Calibración (homing):
- *   1. Baja hasta que el final de carrera se activa  (DIR HIGH)
- *   2. Sube 300 pasos para liberarlo
- *   3. Esa posición = 0 cm → posición HOME
- *
- * Conversión: 2000 pasos = 1 cm  → posición en pasos = cm × 2000
- * Rango: 0–20 cm (0–40 000 pasos desde HOME)
- *
- * La función motor_tick() mueve UN SOLO PASO por llamada (no bloqueante).
- * Llamar en cada loop() de marcador.ino.
- *
- * Estados:
- *   MC_IDLE        → quieto en posición
- *   MC_HOMING_DOWN → bajando hasta el final de carrera
- *   MC_HOMING_UP   → subiendo 300 pasos tras tocar el FC
- *   MC_MOVING      → moviéndose hacia la posición objetivo
- *   MC_ERROR       → error (FC no encontrado tras límite de pasos)
- */
-
 #define MC_STEP_PIN    32
 #define MC_DIR_PIN     33
 #define MC_EN_PIN      25

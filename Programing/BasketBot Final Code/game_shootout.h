@@ -1,25 +1,5 @@
 #pragma once
 
-/*
- * game_shootout.h — Shoot Out: máximos puntos en el tiempo dado
- *
- * ⚠️ MODIFICADO: Ya NO lee sensor físico directamente.
- *    Las canastas se notifican desde marcador.ino mediante gameShootout_notificarCanasta()
- *
- * Hardware:
- *   GPIO 16 → Botón "Listo"   (INPUT_PULLUP, activo LOW)
- *   GPIO 21 → LED indicador
- *
- * Flujo por turno:
- *   1. SO_ESPERANDO_LISTO  → jugador pulsa GPIO16 (o app) para confirmar que está listo
- *   2. SO_CUENTA_ATRAS     → 3… 2… 1… no bloqueante, 1 s por dígito
- *   3. SO_JUGANDO          → sensor cuenta canastas durante turnoMs
- *   4. SO_FIN_TURNO        → pausa 1.5 s, muestra resultado del turno
- *   5. Siguiente turno, o evaluación de ganador / desempate
- *
- * Anti-rebote botón: detección de flanco descendente + cooldown 300 ms
- */
-
 #define GSO_PIN_BTN_LISTO 16
 #define GSO_PIN_LED       21
 #define GSO_MAX_JUG       4

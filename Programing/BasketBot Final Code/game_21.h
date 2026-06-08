@@ -1,21 +1,5 @@
 #pragma once
 
-/*
- * game_21.h — Juego 21 (1-4 jugadores), no bloqueante
- *
- * ⚠️ MODIFICADO: Ya NO lee sensor físico directamente.
- *    Las canastas se notifican desde marcador.ino mediante game21_notificarCanasta()
- *
- * Hardware:
- *   GPIO 21 → LED indicador
- *
- * Reglas:
- *   - Tiro normal : canasta = +2 pts + tiro libre | fallo = pierde turno
- *   - Tiro libre  : canasta = +1 pt + sigue       | fallo = pierde turno
- *   - Pasar de 21 → baja a 11 y pierde turno
- *   - Exactamente 21 → ganador
- */
-
 #define G21_PIN_LED       21
 #define G21_MAX_JUG       4
 #define G21_PUNTOS_WIN    21

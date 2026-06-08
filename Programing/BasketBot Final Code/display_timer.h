@@ -1,22 +1,5 @@
 #pragma once
 
-/*
- * display_timer.h — Display TM1637 de TIEMPO para BasketBot
- *   CLK → GPIO 26  |  DIO → GPIO 4
- *
- * ⚠️ PINES ACTUALIZADOS para evitar conflicto con sensor_canasta.h
- *    (Anteriormente: CLK=13, DIO=12 — ahora usados por el sensor IR)
- *
- * Qué muestra según el modo:
- *   MODO_1VS1     → cuenta atrás  MM:SS  (ej. 05:23)
- *   MODO_SHOOTOUT → tiempo turno  SS     (ej. 0017)
- *   MODO_21       → ventana tiro  SS     (ej. 0003)
- *   MODO_LIBRE    → "----"  (el tiempo no aplica en modo libre)
- *   Sin juego / fin / pausa → "----"
- *
- * Dependencia: TM1637Display by Avishay Orpaz
- */
-
 #include <TM1637Display.h>
 
 #define TIMER_CLK_PIN   26     // ← ACTUALIZADO (era 13)
