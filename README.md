@@ -110,7 +110,7 @@ All game logic files use mode-specific prefixes to avoid naming conflicts in the
 
 ---
 
-## 🔧 Installation & Setup:
+## 🔧 Installation & Setup
 
 ### Prerequisites
 - Arduino IDE with ESP32 board support
